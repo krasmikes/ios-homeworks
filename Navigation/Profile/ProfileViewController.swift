@@ -8,14 +8,16 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
-    let profileHeaderView = ProfileHeaderView()
+    private let profileHeaderView = ProfileHeaderView()
     private var statusText: String = "Waiting for something..."
+    private let newButton = UIButton()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.clipsToBounds = true
         view.backgroundColor = .lightGray
         view.addSubview(profileHeaderView)
+        view.addSubview(newButton)
         
         navigationController?.setNavigationBarHidden(false, animated: true)
         navigationController?.navigationBar.backgroundColor = .systemBackground
@@ -23,25 +25,28 @@ class ProfileViewController: UIViewController {
         navigationItem.title = "Profile"
         
         profileHeaderView.avatarImageView.image = UIImage(named: "cat")
-        profileHeaderView.nameLabel.text = "Hipster Cat"
+        profileHeaderView.fullNameLabel.text = "Hipster Cat"
         profileHeaderView.statusLabel.text = statusText
-        profileHeaderView.statusInputTextField.placeholder = statusText
-        profileHeaderView.statusButton.setTitle("Show statusaaaaa", for: .normal)
+        profileHeaderView.statusTextField.placeholder = statusText
+        profileHeaderView.setStatusButton.setTitle("Show status", for: .normal)
         
-        profileHeaderView.statusButton.addTarget(self, action: #selector(statusButtonPressed), for: .touchUpInside)
-        profileHeaderView.statusInputTextField.addTarget(self, action: #selector(statusTextChanged), for: .editingChanged)
-    }
-    
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-//        Не смог добиться правильного отображения назначая фрейм, поэтому использовал констрейнты, что, как мне кажется более правильным
-//        profileHeaderView.frame = view.frame
+        profileHeaderView.setStatusButton.addTarget(self, action: #selector(statusButtonPressed), for: .touchUpInside)
+        profileHeaderView.statusTextField.addTarget(self, action: #selector(statusTextChanged), for: .editingChanged)
+        
+        newButton.setTitle("New button", for: .normal)
+        newButton.setTitleColor(.black, for: .normal)
+        newButton.backgroundColor = .cyan
+        newButton.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            profileHeaderView.topAnchor.constraint(equalTo: view.topAnchor),
+            profileHeaderView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             profileHeaderView.leftAnchor.constraint(equalTo: view.leftAnchor),
             profileHeaderView.rightAnchor.constraint(equalTo: view.rightAnchor),
-            profileHeaderView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            profileHeaderView.heightAnchor.constraint(equalToConstant: 220),
+            
+            newButton.leftAnchor.constraint(equalTo: view.leftAnchor),
+            newButton.rightAnchor.constraint(equalTo: view.rightAnchor),
+            newButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
     
