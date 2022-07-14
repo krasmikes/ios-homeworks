@@ -8,12 +8,57 @@
 import UIKit
 
 class ProfileHeaderView: UIView {
-    let avatarImageView = UIImageView()
+    var avatarImageView: UIImageView {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.clipsToBounds = true
+        imageView.layer.borderWidth = 3
+        imageView.layer.borderColor = UIColor.white.cgColor
+        imageView.layer.cornerRadius = avatarImageViewWidth / 2
+        imageView.contentMode = .scaleAspectFill
+        return imageView
+    }
+    var fullNameLabel: UILabel {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.boldSystemFont(ofSize: 18)
+        label.textColor = .black
+        return label
+    }
+    var statusLabel: UILabel {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.systemFont(ofSize: 14)
+        label.textColor = .gray
+        return label
+    }
+    var statusTextField: UITextField {
+        let textField = UITextField()
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.font = UIFont.systemFont(ofSize: 15)
+        textField.textColor = .black
+        textField.backgroundColor = .white
+
+        textField.layer.borderWidth = 1
+        textField.layer.borderColor = UIColor.black.cgColor
+        textField.layer.cornerRadius = 12
+        return textField
+    }
+    var setStatusButton: UIButton {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.layer.cornerRadius = 4
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = .magenta
+
+        button.layer.shadowOffset = CGSize(width: 4, height: 4)
+        button.layer.shadowRadius = 4
+        button.layer.shadowOpacity = 0.7
+        button.layer.shadowColor = UIColor.black.cgColor
+        return button
+    }
+
     private let avatarImageViewWidth: CGFloat = 100
-    let fullNameLabel = UILabel()
-    let statusLabel = UILabel()
-    let statusTextField = UITextField()
-    let setStatusButton = UIButton()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -27,41 +72,6 @@ class ProfileHeaderView: UIView {
     
     private func setupView() {
         self.translatesAutoresizingMaskIntoConstraints = false
-        
-        avatarImageView.translatesAutoresizingMaskIntoConstraints = false
-        avatarImageView.clipsToBounds = true
-        avatarImageView.layer.borderWidth = 3
-        avatarImageView.layer.borderColor = UIColor.white.cgColor
-        avatarImageView.layer.cornerRadius = avatarImageViewWidth / 2
-        
-        avatarImageView.contentMode = .scaleAspectFill
-        
-        fullNameLabel.translatesAutoresizingMaskIntoConstraints = false
-        fullNameLabel.font = UIFont.boldSystemFont(ofSize: 18)
-        fullNameLabel.textColor = .black
-        
-        statusLabel.translatesAutoresizingMaskIntoConstraints = false
-        statusLabel.font = UIFont.systemFont(ofSize: 14)
-        statusLabel.textColor = .gray
-        
-        statusTextField.translatesAutoresizingMaskIntoConstraints = false
-        statusTextField.font = UIFont.systemFont(ofSize: 15)
-        statusTextField.textColor = .black
-        statusTextField.backgroundColor = .white
-        
-        statusTextField.layer.borderWidth = 1
-        statusTextField.layer.borderColor = UIColor.black.cgColor
-        statusTextField.layer.cornerRadius = 12
-        
-        setStatusButton.translatesAutoresizingMaskIntoConstraints = false
-        setStatusButton.layer.cornerRadius = 4
-        setStatusButton.setTitleColor(.white, for: .normal)
-        setStatusButton.backgroundColor = .magenta
-        
-        setStatusButton.layer.shadowOffset = CGSize(width: 4, height: 4)
-        setStatusButton.layer.shadowRadius = 4
-        setStatusButton.layer.shadowOpacity = 0.7
-        setStatusButton.layer.shadowColor = UIColor.black.cgColor
         
         [
             avatarImageView,
