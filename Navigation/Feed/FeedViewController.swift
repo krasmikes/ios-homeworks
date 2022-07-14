@@ -7,23 +7,45 @@
 import UIKit
 
 class FeedViewController: UIViewController {
-
-    let postButton = UIButton(frame: .zero)
-    let post = Post(title: "Post Title")
+    private let verticalStack = UIStackView()
+    private let firstPostButton = UIButton()
+    private let secondPostButton = UIButton()
+    private let post = Post(title: "Post Title")
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
+        view.addSubview(verticalStack)
 
-        postButton.setTitle("Open post", for: .normal)
-        postButton.setTitleColor(.black, for: .normal)
-        postButton.backgroundColor = .gray
+        firstPostButton.setTitle("Open post", for: .normal)
+        firstPostButton.setTitleColor(.black, for: .normal)
+        firstPostButton.backgroundColor = .gray
+        
+        secondPostButton.setTitle("Open second post", for: .normal)
+        secondPostButton.setTitleColor(.darkGray, for: .normal)
+        secondPostButton.backgroundColor = .lightGray
 
-        postButton.frame.size.height = 50
-        postButton.frame.size.width = 100
-        postButton.center = view.center
-        view.addSubview(postButton)
-
-        postButton.addTarget(self, action: #selector(postButtonTapped), for: .touchUpInside)
+        firstPostButton.addTarget(self, action: #selector(postButtonTapped), for: .touchUpInside)
+        secondPostButton.addTarget(self, action: #selector(postButtonTapped), for: .touchUpInside)
+        
+        verticalStack.axis = .vertical
+        verticalStack.distribution = .equalSpacing
+        verticalStack.spacing = 10
+        verticalStack.translatesAutoresizingMaskIntoConstraints = false
+        
+        [firstPostButton,
+         secondPostButton
+        ].forEach { verticalStack.addArrangedSubview($0) }
+        
+        NSLayoutConstraint.activate([
+            firstPostButton.heightAnchor.constraint(equalToConstant: 50),
+            secondPostButton.heightAnchor.constraint(equalTo: firstPostButton.heightAnchor),
+            secondPostButton.widthAnchor.constraint(equalTo: firstPostButton.widthAnchor),
+            
+            verticalStack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            verticalStack.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
+        
     }
 
     @objc private func postButtonTapped(_ sender: UIButton) {
