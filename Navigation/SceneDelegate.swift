@@ -14,18 +14,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
-          
+
         let window = UIWindow(windowScene: windowScene)
-        
+
         let feedNavigationController = UINavigationController(rootViewController: FeedViewController())
         feedNavigationController.tabBarItem = UITabBarItem(title: "Feed", image: UIImage(systemName: "newspaper"), tag: 0)
-        
+
         let profileNavigationController = UINavigationController(rootViewController: ProfileViewController())
         profileNavigationController.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person"), tag: 1)
-        
+
         let tabBarViewController = UITabBarController()
         tabBarViewController.viewControllers = [feedNavigationController, profileNavigationController]
-        
+
         window.rootViewController = tabBarViewController
         window.makeKeyAndVisible()
         self.window = window
