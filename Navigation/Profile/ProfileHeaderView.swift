@@ -8,7 +8,7 @@
 import UIKit
 
 class ProfileHeaderView: UIView {
-    var avatarImageView: UIImageView {
+    lazy var avatarImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.clipsToBounds = true
@@ -17,22 +17,22 @@ class ProfileHeaderView: UIView {
         imageView.layer.cornerRadius = avatarImageViewWidth / 2
         imageView.contentMode = .scaleAspectFill
         return imageView
-    }
-    var fullNameLabel: UILabel {
+    }()
+    var fullNameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.boldSystemFont(ofSize: 18)
         label.textColor = .black
         return label
-    }
-    var statusLabel: UILabel {
+    }()
+    var statusLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 14)
         label.textColor = .gray
         return label
-    }
-    var statusTextField: UITextField {
+    }()
+    var statusTextField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.font = UIFont.systemFont(ofSize: 15)
@@ -43,8 +43,8 @@ class ProfileHeaderView: UIView {
         textField.layer.borderColor = UIColor.black.cgColor
         textField.layer.cornerRadius = 12
         return textField
-    }
-    var setStatusButton: UIButton {
+    }()
+    var setStatusButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.cornerRadius = 4
@@ -56,7 +56,7 @@ class ProfileHeaderView: UIView {
         button.layer.shadowOpacity = 0.7
         button.layer.shadowColor = UIColor.black.cgColor
         return button
-    }
+    }()
 
     private let avatarImageViewWidth: CGFloat = 100
     
@@ -72,7 +72,7 @@ class ProfileHeaderView: UIView {
     
     private func setupView() {
         self.translatesAutoresizingMaskIntoConstraints = false
-        
+
         [
             avatarImageView,
             fullNameLabel,

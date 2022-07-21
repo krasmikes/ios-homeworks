@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		294A0D6828805D3E005D0593 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294A0D6728805D3E005D0593 /* LogInViewController.swift */; };
+		294A0D6A2880752D005D0593 /* UIImage+Alpha.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294A0D692880752D005D0593 /* UIImage+Alpha.swift */; };
+		294A0D6D28807CA2005D0593 /* UIView+Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294A0D6C28807CA2005D0593 /* UIView+Border.swift */; };
 		2971CAF427745FF800617A8B /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2971CAF327745FF800617A8B /* FeedViewController.swift */; };
 		2971CAF72774619D00617A8B /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2971CAF62774619D00617A8B /* InfoViewController.swift */; };
 		2971CAF9277461BA00617A8B /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2971CAF8277461BA00617A8B /* PostViewController.swift */; };
@@ -20,6 +23,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		294A0D6728805D3E005D0593 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		294A0D692880752D005D0593 /* UIImage+Alpha.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Alpha.swift"; sourceTree = "<group>"; };
+		294A0D6C28807CA2005D0593 /* UIView+Border.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Border.swift"; sourceTree = "<group>"; };
 		2971CAF327745FF800617A8B /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		2971CAF62774619D00617A8B /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		2971CAF8277461BA00617A8B /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
@@ -45,11 +51,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		294A0D6B2880755C005D0593 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				294A0D692880752D005D0593 /* UIImage+Alpha.swift */,
+				294A0D6C28807CA2005D0593 /* UIView+Border.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		2971CAF127745BD500617A8B /* Profile */ = {
 			isa = PBXGroup;
 			children = (
 				2971CAFA277461D500617A8B /* ProfileViewController.swift */,
 				2971CAFE2774627E00617A8B /* ProfileHeaderView.swift */,
+				294A0D6728805D3E005D0593 /* LogInViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -83,6 +99,7 @@
 		29789C3E2768FBFA001F17BE /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				2971CAFC277461FF00617A8B /* Post.swift */,
 				2971CAF227745FDC00617A8B /* Feed */,
 				2971CAF127745BD500617A8B /* Profile */,
 				29789C3F2768FBFA001F17BE /* AppDelegate.swift */,
@@ -90,7 +107,7 @@
 				29789C482768FBFC001F17BE /* Assets.xcassets */,
 				29789C4A2768FBFC001F17BE /* LaunchScreen.storyboard */,
 				29789C4D2768FBFC001F17BE /* Info.plist */,
-				2971CAFC277461FF00617A8B /* Post.swift */,
+				294A0D6B2880755C005D0593 /* Extensions */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -167,12 +184,15 @@
 			files = (
 				2971CAFB277461D500617A8B /* ProfileViewController.swift in Sources */,
 				29789C402768FBFA001F17BE /* AppDelegate.swift in Sources */,
+				294A0D6A2880752D005D0593 /* UIImage+Alpha.swift in Sources */,
+				294A0D6828805D3E005D0593 /* LogInViewController.swift in Sources */,
 				2971CAF427745FF800617A8B /* FeedViewController.swift in Sources */,
 				2971CAF72774619D00617A8B /* InfoViewController.swift in Sources */,
 				29789C422768FBFA001F17BE /* SceneDelegate.swift in Sources */,
 				2971CAFD277461FF00617A8B /* Post.swift in Sources */,
 				2971CAF9277461BA00617A8B /* PostViewController.swift in Sources */,
 				2971CAFF2774627E00617A8B /* ProfileHeaderView.swift in Sources */,
+				294A0D6D28807CA2005D0593 /* UIView+Border.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,7 +333,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = YQ9T4889M7;
+				DEVELOPMENT_TEAM = GB4R5FUHG3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Navigation/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -340,7 +360,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = YQ9T4889M7;
+				DEVELOPMENT_TEAM = GB4R5FUHG3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Navigation/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

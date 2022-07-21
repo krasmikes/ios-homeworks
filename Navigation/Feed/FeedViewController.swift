@@ -7,30 +7,32 @@
 import UIKit
 
 class FeedViewController: UIViewController {
-    private var verticalStack: UIStackView {
+    private var verticalStack: UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
         stack.distribution = .equalSpacing
         stack.spacing = 10
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
-    }
-    private var firstPostButton: UIButton {
+    }()
+    private var firstPostButton: UIButton = {
         let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Open post", for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.backgroundColor = .gray
         button.addTarget(self, action: #selector(postButtonTapped), for: .touchUpInside)
         return button
-    }
-    private var secondPostButton: UIButton {
+    }()
+    private var secondPostButton: UIButton = {
         let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Open second post", for: .normal)
         button.setTitleColor(.darkGray, for: .normal)
         button.backgroundColor = .lightGray
         button.addTarget(self, action: #selector(postButtonTapped), for: .touchUpInside)
         return button
-    }
+    }()
     private let post = Post(title: "Post Title")
 
     override func viewDidLoad() {
@@ -46,7 +48,7 @@ class FeedViewController: UIViewController {
             firstPostButton.heightAnchor.constraint(equalToConstant: 50),
             secondPostButton.heightAnchor.constraint(equalTo: firstPostButton.heightAnchor),
             secondPostButton.widthAnchor.constraint(equalTo: firstPostButton.widthAnchor),
-            
+
             verticalStack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             verticalStack.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
