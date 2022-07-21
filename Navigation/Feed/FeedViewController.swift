@@ -7,9 +7,32 @@
 import UIKit
 
 class FeedViewController: UIViewController {
-    private let verticalStack = UIStackView()
-    private let firstPostButton = UIButton()
-    private let secondPostButton = UIButton()
+    private var verticalStack: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .vertical
+        stack.distribution = .equalSpacing
+        stack.spacing = 10
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        return stack
+    }()
+    private var firstPostButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Open post", for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        button.backgroundColor = .gray
+        button.addTarget(self, action: #selector(postButtonTapped), for: .touchUpInside)
+        return button
+    }()
+    private var secondPostButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Open second post", for: .normal)
+        button.setTitleColor(.darkGray, for: .normal)
+        button.backgroundColor = .lightGray
+        button.addTarget(self, action: #selector(postButtonTapped), for: .touchUpInside)
+        return button
+    }()
     private let post = Post(title: "Post Title")
 
     override func viewDidLoad() {
@@ -17,22 +40,6 @@ class FeedViewController: UIViewController {
         view.backgroundColor = .white
         view.addSubview(verticalStack)
 
-        firstPostButton.setTitle("Open post", for: .normal)
-        firstPostButton.setTitleColor(.black, for: .normal)
-        firstPostButton.backgroundColor = .gray
-        
-        secondPostButton.setTitle("Open second post", for: .normal)
-        secondPostButton.setTitleColor(.darkGray, for: .normal)
-        secondPostButton.backgroundColor = .lightGray
-
-        firstPostButton.addTarget(self, action: #selector(postButtonTapped), for: .touchUpInside)
-        secondPostButton.addTarget(self, action: #selector(postButtonTapped), for: .touchUpInside)
-        
-        verticalStack.axis = .vertical
-        verticalStack.distribution = .equalSpacing
-        verticalStack.spacing = 10
-        verticalStack.translatesAutoresizingMaskIntoConstraints = false
-        
         [firstPostButton,
          secondPostButton
         ].forEach { verticalStack.addArrangedSubview($0) }
@@ -41,7 +48,7 @@ class FeedViewController: UIViewController {
             firstPostButton.heightAnchor.constraint(equalToConstant: 50),
             secondPostButton.heightAnchor.constraint(equalTo: firstPostButton.heightAnchor),
             secondPostButton.widthAnchor.constraint(equalTo: firstPostButton.widthAnchor),
-            
+
             verticalStack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             verticalStack.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
